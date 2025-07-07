@@ -1,0 +1,112 @@
+<section class="tabs-section py-5">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <ul class="nav nav-pills custom-tabs-container mb-3" id="jobTabs" role="tablist">
+                    <li class="nav-item custom-tab-item" role="presentation">
+                        <button class="nav-link custom-tab-button active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all-jobs" type="button" role="tab" aria-controls="all-jobs" aria-selected="true">All</button>
+                    </li>
+                    <li class="nav-item custom-tab-item" role="presentation">
+                        <button class="nav-link custom-tab-button" id="government-tab" data-bs-toggle="pill" data-bs-target="#government-jobs" type="button" role="tab" aria-controls="government-jobs" aria-selected="false">Government</button>
+                    </li>
+                    <li class="nav-item custom-tab-item" role="presentation">
+                        <button class="nav-link custom-tab-button" id="private-tab" data-bs-toggle="pill" data-bs-target="#private-jobs" type="button" role="tab" aria-controls="private-jobs" aria-selected="false">Private</button>
+                    </li>
+                    <li class="nav-item custom-tab-item" role="presentation">
+                        <button class="nav-link custom-tab-button" id="foreign-tab" data-bs-toggle="pill" data-bs-target="#foreign-jobs" type="button" role="tab" aria-controls="foreign-jobs" aria-selected="false">Foreign</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-content custom-tab-content mt-4" id="jobTabsContent">
+                <div class="tab-pane fade show active" id="all-jobs" role="tabpanel" aria-labelledby="all-tab">
+                    <h3 class="text-center">All Jobs</h3>
+                     <span class="badge bg-dark " style="border-radius: 15px !important;"></span>
+                     <div class="row">
+                        <% jobs.forEach(job => { %>
+                        <!-- All cards -->
+                      <div class="col-md-6 col-lg-4 mb-4">
+  <a href="job_details/<%= job._id %>" class="card_link" style="text-decoration:none;">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body">
+                                    <h5 class="card-title"><%= job.post_name %></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-building me-1"></i><%= job.company_name %></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-mortarboard me-1"></i><%= job.education %></h6>
+                                    <span class="badge bg-dark">  <i class="bi bi-geo-alt-fill me-1"></i> 
+                                <span><%= job.location %></span></span>
+                                   <a href="job_details/<%= job._id %>"><span class="badge bg-dark">View-Details</span></a>  
+                                </div>
+                            </div>
+                        </a>
+                        </div><% }) %>
+                        <!-- All cards end -->
+                
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="government-jobs" role="tabpanel" aria-labelledby="government-tab">
+                    <h3 class="text-center">Government Jobs</h3>
+                    <div class="row">
+                        <!-- All  government cards -->
+                        <% government_jobs.forEach(job => { %>
+                      <div class="col-md-6 col-lg-4 mb-4">
+  <a href="job_details/<%= job._id %>" class="card_link" style="text-decoration:none;">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body">
+                                    <h5 class="card-title"><%= job.post_name %></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-building me-1"></i><%= job.company_name %></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-mortarboard me-1"></i><%= job.education %></h6>
+                                    <span class="badge bg-dark">  <i class="bi bi-geo-alt-fill me-1"></i> 
+                                <span><%= job.location %></span></span>
+                                   <a href="job_details/<%= job._id %>"><span class="badge bg-dark">View-Details</span></a>  
+                                </div>
+                            </div>
+                        </a>
+                        </div><% }) %>
+                        <!-- All  government cards end -->
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="private-jobs" role="tabpanel" aria-labelledby="private-tab">
+                    <h3 class="text-center">Private Sector Jobs</h3>
+                    <div class="row">
+                     <% private_jobs.forEach(job => { %>
+                      <div class="col-md-6 col-lg-4 mb-4">
+  <a href="job_details/<%= job._id %>" class="card_link" style="text-decoration:none;">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body">
+                                    <h5 class="card-title"><%= job.post_name %></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-building me-1"></i><%= job.company_name %></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-mortarboard me-1"></i><%= job.education %></h6>
+                                    <span class="badge bg-dark">  <i class="bi bi-geo-alt-fill me-1"></i> 
+                                <span><%= job.location %></span></span>
+                                   <a href="job_details/<%= job._id %>"><span class="badge bg-dark">View-Details</span></a>  
+                                </div>
+                            </div>
+                        </a>
+                        </div><% }) %>
+                        <!-- All  private   cards end -->
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="foreign-jobs" role="tabpanel" aria-labelledby="foreign-tab">
+                    <h3 class="text-center">Foreign Jobs</h3>
+                    <div class="row">
+                     <% foreign_jobs.forEach(job => { %>
+                      <div class="col-md-6 col-lg-4 mb-4">
+  <a href="job_details/<%= job._id %>" class="card_link" style="text-decoration:none;">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body">
+                                    <h5 class="card-title"><%= job.post_name %></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-building me-1"></i><%= job.company_name %></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-mortarboard me-1"></i><%= job.education %></h6>
+                                    <span class="badge bg-dark">  <i class="bi bi-geo-alt-fill me-1"></i> 
+                                <span><%= job.location %></span></span>
+                                   <a href="job_details/<%= job._id %>"><span class="badge bg-dark">View-Details</span></a>  
+                                </div>
+                            </div>
+                        </a>
+                        </div><% }) %>
+                   <!-- All  forgien  cards end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

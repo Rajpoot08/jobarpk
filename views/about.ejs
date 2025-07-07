@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Attractive Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Variables for a refined Black & White Theme */
+        :root {
+            --primary-text-color: #1a1a1a; /* Very dark grey for main text */
+            --secondary-text-color: #555555; /* Medium grey for secondary text/labels */
+            --background-color: #f5f5f5; /* Off-white background */
+            --card-background: #ffffff; /* Pure white for sections */
+            --border-color: #e0e0e0; /* Light grey border for subtle definition */
+            --border-radius-sm: 6px;
+            --border-radius-md: 10px;
+            --spacing-xs: 0.5rem;   /* 8px */
+            --spacing-sm: 1rem;     /* 16px */
+            --spacing-md: 1.5rem;   /* 24px */
+            --spacing-lg: 2rem;     /* 32px */
+            --spacing-xl: 3rem;     /* 48px */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Ensure Inter font is loaded and used */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--primary-text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Ensure it takes full height */
+            box-sizing: border-box;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px; /* Slightly wider container for content */
+            padding: var(--spacing-md);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg); /* Gap between main sections */
+        }
+
+        /* Section Styling */
+        .section-card {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md); /* More rounded corners */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+            padding: var(--spacing-xl); /* Generous padding inside cards */
+            box-sizing: border-box;
+            animation: fadeInSlideUp 0.8s ease-out forwards; /* Animation for sections */
+            opacity: 0; /* Start invisible for animation */
+            transform: translateY(20px); /* Start slightly lower */
+        }
+
+        .section-card h1, .section-card h2 {
+            text-align: center;
+            color: var(--primary-text-color);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 700; /* Bold headings */
+        }
+
+        .section-card h1 {
+            font-size: 2.8rem; /* Larger main heading */
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-card h2 {
+            font-size: 2.2rem;
+        }
+
+        .section-card p {
+            font-size: 1.05rem; /* Slightly larger paragraph text */
+            line-height: 1.7;
+            margin-bottom: var(--spacing-sm);
+            text-align: justify;
+            max-width: 800px; /* Constrain text width for readability */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-card p strong {
+            color: var(--primary-text-color);
+            font-weight: 600;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted min-width for stats */
+            gap: var(--spacing-md); /* Gap between stat cards */
+            text-align: center;
+        }
+
+        .stat-card {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-md);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for stat cards */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 140px; /* Ensure cards have some height */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow on hover */
+        }
+
+        .stat-card .number {
+            font-size: 3.8rem; /* Larger numbers */
+            font-weight: 700; /* Bold numbers */
+            color: var(--primary-text-color);
+            margin-bottom: var(--spacing-xs);
+            white-space: nowrap;
+            line-height: 1.1; /* Tighter line height */
+        }
+
+        .stat-card .label {
+            font-size: 1.1rem; /* Slightly larger label */
+            color: var(--secondary-text-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px; /* Reduced letter spacing for better readability */
+            font-weight: 500;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--spacing-sm);
+                gap: var(--spacing-md);
+            }
+
+            .section-card {
+                padding: var(--spacing-lg); /* Reduce padding on smaller screens */
+            }
+
+            .section-card h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-card h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-card p {
+                font-size: 1rem;
+            }
+
+            .stat-card .number {
+                font-size: 3rem;
+            }
+
+            .stat-card .label {
+                font-size: 1rem;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr; /* Stack cards on small screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: var(--spacing-xs);
+            }
+
+            .section-card {
+                padding: var(--spacing-md);
+            }
+
+            .section-card h1 {
+                font-size: 1.8rem;
+            }
+            .section-card h2 {
+                font-size: 1.5rem;
+            }
+
+            .stat-card .number {
+                font-size: 2.5rem;
+            }
+
+            .stat-card .label {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation for appearance */
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Staggered animation delays */
+        .hero-section { animation-delay: 0.1s; }
+        .stats-section { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section: About Us -->
+        <section class="section-card hero-section">
+            <h1>About Us</h1>
+            <p>
+                We are the <strong>#1 job site in Pakistan</strong> .
+                More people get hired on our platform than any other site because we put job seekers first,
+                giving them access to search jobs in Government Sector ,Private Sector and Foreign.
+            </p>
+        
+            <p style="font-size: 0.9rem; color: var(--secondary-text-color); text-align: center;">
+                Please note that after job macth please confirm before taking any step, <strong>JOBAR pk. Copyright 2025</strong>
+            </p>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="section-card stats-section">
+            <div class="stat-card">
+                <div class="number">100k+</div>
+                <div class="label">Job Achivers</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">2k+</div>
+                <div class="label">Employers use us to hire</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">30k+</div>
+                <div class="label">Daily visitors</div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

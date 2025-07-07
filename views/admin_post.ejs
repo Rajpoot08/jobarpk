@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Job Details</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        /* Custom styles for focus states */
+        .input-focus:focus {
+            outline: none;
+            border-color: #6366f1; /* Indigo-500 */
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4); /* Indigo-500 with transparency */
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white p-6 sm:p-8 rounded-lg shadow-xl w-full max-w-4xl border border-gray-200">
+        <!-- Header with Cancel Icon -->
+        <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Post New Job</h2>
+            <button class="text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-full p-2" aria-label="Cancel">
+                <a href="/admin_pannel">    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg></a>
+            
+            </button>
+        </div>
+
+        <!-- Job Details Form -->
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4" action="/admin_post" method="POST">
+            <!-- Post Name -->
+            <div>
+                <label for="post-name" class="block text-sm font-medium text-gray-700 mb-1">Post Name</label>
+                <input type="text" id="post-name" name="post_name" placeholder="e.g., Senior Software Engineer"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+            </div>
+
+            <!-- Salary -->
+            <div>
+                <label for="salary" class="block text-sm font-medium text-gray-700 mb-1">Salary (PKR)</label>
+                <input type="text" id="salary" name="salary" placeholder="e.g., 80,000 - 120,000 PKR"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+            </div>
+
+            <!-- Location -->
+            <div>
+                <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                <input type="text" id="location" name="location" placeholder="e.g., Lahore, Pakistan"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+            </div>
+
+            <!-- Education -->
+            <div>
+                <label for="education" class="block text-sm font-medium text-gray-700 mb-1">Education</label>
+                <input type="text" id="education" name="education" placeholder="e.g., Bachelor's in Computer Science"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+            </div>
+
+            <!-- Company Name -->
+            <div>
+                <label for="company-name" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                <input type="text" id="company-name" name="company_name" placeholder="e.g., Tech Solutions Inc."
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+            </div>
+
+            <!-- Company Logo -->
+            <div>
+                <label for="company_type" class="block text-sm font-medium text-gray-700 mb-1">Company Type</label>
+                    <select id="company_type" name="company_type"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+                    <option value="">Select Company Type</option>
+                    <option value="Government">Government</option>
+                    <option value="Private">Private</option>
+                    <option value="Foreign">Foreign</option>
+                </select>
+            </div>
+
+            <!-- Experience -->
+            <div>
+                <label for="experience" class="block text-sm font-medium text-gray-700 mb-1">Experience</label>
+                <input type="text" id="experience" name="experience" placeholder="e.g., 3-5 years"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+            </div>
+
+            <!-- Expiry Date -->
+            <div>
+                <label for="expiry-date" class="block text-sm font-medium text-gray-700 mb-1">Application Expiry Date</label>
+                <input type="date" id="expiry-date" name="expiry_date"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+            </div>
+
+            <!-- Gender -->
+            <div>
+                <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+                <select id="gender" name="gender"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+                    <option value="">Select Gender</option>
+                    <option value="any">Any</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <!-- Job Type -->
+            <div>
+                <label for="job-type" class="block text-sm font-medium text-gray-700 mb-1">Job Type</label>
+                <select id="job-type" name="job_type"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+                    <option value="">Select Job Type</option>
+                    <option value="remote">Remote</option>
+                    <option value="permanent">Permanent</option>
+                    <option value="contract">Contract</option>
+                </select>
+            </div>
+
+            <!-- Job Shift -->
+            <div>
+                <label for="job-shift" class="block text-sm font-medium text-gray-700 mb-1">Job Shift</label>
+                <input type="text" id="job-shift" name="job_shift" placeholder="e.g., Day Shift, Night Shift"
+                       class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus">
+            </div>
+
+            <!-- Responsibilities (Full Width) -->
+            <div class="md:col-span-2">
+                <label for="responsibilities" class="block text-sm font-medium text-gray-700 mb-1">Responsibilities</label>
+                <textarea id="responsibilities" name="responsibilities" rows="5" placeholder="List key responsibilities..."
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus"></textarea>
+            </div>
+
+            <!-- Description (Full Width) -->
+            <div class="md:col-span-2">
+                <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Job Description</label>
+                <textarea id="description" name="description" rows="7" placeholder="Provide a detailed description of the job, including requirements and benefits..."
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm input-focus"></textarea>
+            </div>
+
+            <!-- Submit Button (Full Width) -->
+            <div class="md:col-span-2 mt-4 flex justify-end">
+                <button type="submit"
+                        class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Post Job
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

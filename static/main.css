@@ -1,0 +1,401 @@
+body{
+    margin: 0%;
+        font-family: 'Roboto', sans-serif;
+    background-color: #f3f2f1;
+}
+/* ******************** Header css ******************************* */
+:root {
+    --jobar-black: #000000;
+    --jobar-dark-grey: #000000;
+    --jobar-light-grey: #030303;
+     --new-hero-bg-color: #2e3b4a; /* A dark base color for the background */
+    --new-hero-heading-white: #ffffff;
+    --new-hero-heading-yellow: #ffc107; /* Bootstrap's yellow */
+    --new-hero-heading-red: #dc3545; /* Bootstrap's red for "love" */
+     /* NEW: Tabs Section Colors (add these if not already in your :root) */
+    --tabs-bg-container: #ffffff;
+    --tabs-border-color: #dee2e6; /* Light border around the whole container */
+    --tabs-active-bg: #000000;
+    --tabs-active-text: #ffffff;
+    --tabs-inactive-bg: #ffffff;
+    --tabs-inactive-text: #000000;
+
+}
+
+.navbar{
+height: 72px !important;
+}
+
+/* jobar Logo Styling */
+.jobar-logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--jobar-black) !important;
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+
+
+/* Custom Nav Link Styling (underline effect) - Applies to both desktop and offcanvas */
+.custom-nav-link {
+    color: var(--jobar-light-grey) !important;
+    font-size: 15px;
+    position: relative;
+    transition: color 0.3s ease;
+    padding: 20px 0;
+    margin: 30px 20px 0px 20px; /* Adjusted margin for better spacing */
+}
+
+.custom-nav-link:hover {
+    box-shadow:0px -3px 0px  black inset ;
+    color: #000000 !important;
+}
+
+/* Active and Hover Underline Effect - Applies to desktop only */
+/* Offcanvas links usually don't have this effect */
+.custom-nav-link.active::after,
+.custom-nav-link:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--indeed-blue);
+    transform: scaleX(0); /* Hidden */
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-out;
+}
+
+
+
+/* Button Overrides for jobar's Specific Blue */
+.jobar-btn-notify {
+       background-color: var(--jobar-black) !important;
+    border-color: var(--jobar-blue) !important;
+    color: #ffffff !important;
+    margin-top: 20px;
+}
+.jobar-btn-notify:hover {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+   border: 1px solid black !important;
+}
+
+.jobar-btn-postjob {
+    background-color: var(--jobar-black) !important;
+    border-color: var(--jobar-blue) !important;
+    margin-top: 20px;
+
+}
+.jobar-btn-postjob:hover {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+   border: 1px solid black !important;
+}
+/* card job wala  */
+.card_link{
+    text-decoration: none !important;
+    color: #000000 !important;
+}
+
+/* ******************** Header css end ******************************* */
+/* ******************** Hero section  css Start ******************************* */
+/* --- NEW Hero/Search Section Styles --- */
+.new-hero-section {
+
+    background-image: url(./background.jpeg); /* Placeholder image */
+    /* IMPORTANT: Replace with your actual dark pattern background image URL */
+    /* Example: background-image: url('your-pattern-image.png'); */
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px; /* Adjust height as needed */
+    background-blend-mode:color;
+    background-color: rgba(66, 64, 64, 0.733); /* Dark base color */
+  
+}
+
+.new-hero-headline {
+    font-family: 'Montserrat', sans-serif; /* Use a more prominent font */
+    font-size: 3.5rem;
+    font-weight: 700;
+    color:rgb(255, 255, 255) !important;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.new-hero-headline .love-text {
+    text-shadow: 5px 5px 10px rgb(0, 0, 0);
+    color: rgb(255, 255, 255); 
+    display: inline-block;
+}
+
+.new-hero-search-form {
+    max-width: 700px;
+    width: 100%;
+    color: #000000;
+  
+}
+
+.new-hero-input-group {
+    flex-grow: 1    ;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.new-hero-form-control {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 1rem 1.25rem;
+    font-size: 1.1rem;
+    height: auto;
+    color: var(--indeed-dark-grey);
+}
+
+.new-hero-form-control::placeholder {
+    color: #999;
+      font-size: large;
+    
+}
+
+.new-hero-search-btn {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size:larger !important;
+    font-weight: 800 !important;
+    min-width: 150px;
+}
+.new-hero-search-btn:hover {
+    background-color: #ffffff !important;
+    border-color: #000000 !important;
+    color: #000000 !important;
+}
+
+
+/* --- NEW Tabs Section Styles --- */
+.tabs-section {
+    background-color: #f3f2f1; /* Match body background or set specific */
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.custom-tabs-container {
+    background-color: var(--tabs-bg-container);
+    border: 1px solid var(--tabs-border-color);
+    border-radius: 50px; /* Highly rounded corners for the container */
+    padding: 5px; /* Internal padding for the buttons */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    max-width: 700px; /* Limit the width for desktop */
+    width: 100%; /* Take full width on smaller screens */
+    display: flex; /* Ensure display flex for desktop and mobile */
+    flex-wrap: nowrap; /* CRUCIAL: Keep all items on one line, prevent wrapping */
+    justify-content: space-between; /* Distribute items evenly */
+    /* If you want them to be very compact and always fit, you might need text overflow ellipsis on the buttons if names are long. */
+}
+
+/* Hide scrollbar (not strictly needed with nowrap, but good practice if you ever re-enable scroll) */
+.custom-tabs-container::-webkit-scrollbar {
+    display: none;
+}
+.custom-tabs-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+.custom-tab-item {
+    flex-grow: 1; /* Make tabs take equal space */
+    flex-shrink: 1; /* ALLOW shrinking to fit on one line */
+    margin: 0 2px; /* Small gap between buttons */
+    min-width: 0; /* Allow the flex item to shrink below its content size */
+}
+.custom-tab-item:first-child { margin-left: 0; }
+.custom-tab-item:last-child { margin-right: 0; }
+
+
+.custom-tab-button {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.75rem 0.5rem; /* Reduced horizontal padding for smaller screens */
+    border-radius: 40px !important; /* Rounded corners for individual buttons */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none; /* Ensure no border */
+    width: 100%; /* Make button fill its flex item */
+    white-space: nowrap; /* Ensure text itself doesn't wrap inside the button */
+    overflow: hidden; /* Hide overflow if text is too long */
+    text-overflow: ellipsis; /* Add ellipsis if text is too long */
+
+
+    /* Inactive State */
+    background-color: var(--tabs-inactive-bg);
+    color: var(--tabs-inactive-text) !important;
+}
+
+.custom-tab-button.active {
+    /* Active State */
+    background-color: var(--tabs-active-bg) !important;
+    color: var(--tabs-active-text) !important;
+}
+
+.custom-tab-button:hover:not(.active) {
+    background-color: #f0f0f0; /* Light grey hover for inactive */
+    color: #333;
+}
+
+/* Tab Content Styling */
+.custom-tab-content {
+    background-color: #fff; /* White background for content */
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Example Job Card Styling */
+.custom-tab-content .card {
+    border-radius: 12px; /* Nicely rounded card corners */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.custom-tab-content .card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+
+/* Tabs size */
+.tab-content{
+    min-height: 600px !important;
+} 
+.card-body{
+    border: 1px solid black !important;
+    border-radius: 10px !important;
+}
+.card-title{
+    font-size: 1.5rem !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    color: #000000 !important;
+}
+.card-subtitle{
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    color: #000000 !important;
+}
+
+/* Media Quires header*/
+
+/* Make sure underline only shows on larger screens */
+@media (min-width: 768px) { /* Applies only to desktop view */
+    .custom-nav-link.active::after,
+    .custom-nav-link:hover::after {
+        transform: scaleX(1); /* Visible */
+    }
+}
+
+/* --- Mobile Specific Adjustments (for Offcanvas and Toggler) --- */
+@media (max-width: 767.98px) {
+    /* Hide desktop links and buttons on mobile */
+    #navbarNavDesktop {
+        display: none !important; /* Force hide the desktop specific collapse */
+    }
+
+    /* Adjust nav-link padding within the offcanvas */
+    .offcanvas-body .custom-nav-link {
+        padding: 10px 0 !important; /* Adjust padding for mobile list items */
+        margin: 0; /* Remove horizontal margin */
+        border-bottom: 1px solid #eee; /* Add subtle border between mobile links */
+    }
+    .offcanvas-body .custom-nav-link:last-child {
+        border-bottom: none; /* No border on the last link */
+    }
+
+    /* Style the offcanvas title to match indeed logo */
+    .offcanvas-title.indeed-logo {
+        font-size: 24px; /* Smaller font for title */
+        padding-top: 0; /* Adjust padding */
+        padding-bottom: 0;
+    }
+  
+
+    /* Toggler Styling */
+    .navbar-toggler {
+        border: none;
+        padding: 0;
+    }
+    /* Responsive adjustments for the new hero section */
+        .new-hero-section {
+        min-height: 400px;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    .new-hero-headline {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+    .new-hero-search-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    .new-hero-input-group {
+        width: 100%;
+        margin-right: 0 !important;
+        margin-bottom: 15px !important;
+    }
+    .new-hero-search-btn {
+        width: 30vw;
+        min-width: unset;
+        border-radius: 50px !important;
+    }
+      .custom-tabs-container {
+        padding: 5px;
+        border-radius: 50px;
+        flex-wrap: nowrap !important; /* Keep on one line */
+        justify-content: space-between; /* Distribute evenly */
+    }
+
+    .custom-tab-item {
+        flex-basis: auto; /* Let content determine initial basis, then shrink */
+        flex-grow: 1; /* Allow growing */
+        flex-shrink: 1; /* CRUCIAL: Allow shrinking */
+        margin: 0 2px;
+        min-width: 0; /* Allow tabs to become very small if needed */
+    }
+
+    .custom-tab-button {
+        font-size: 0.8rem; /* Smaller font on mobile to help fit */
+        padding: 0.6rem 0.2rem; /* Even smaller horizontal padding */
+        white-space: nowrap; /* Prevent text wrapping inside button */
+        color: #000000 !important;
+    }
+
+    .custom-tab-content {
+        padding: 1.5rem;
+    }
+  
+}
+/* Media Quires header end*/
+
+
+
+@media (max-width: 480px) {
+    .new-hero-headline {
+        font-size: 1.8rem;
+    }
+      .custom-tab-button {
+        font-size: 0.7rem !important; /* Smaller font on mobile to help fit */
+        padding: 0.6rem 0.2rem; /* Even smaller horizontal padding */
+        white-space: nowrap; /* Prevent text wrapping inside button */
+    }
+}
+/* Responsive adjustments for the new hero section END */
+
+

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a New Job</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import for Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8; /* Light gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            margin: 0;
+            padding: 20px; /* Padding for small screens */
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+        /* Custom scrollbar for textarea (optional, for better aesthetics) */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main container for the job post form -->
+    <div class="bg-white p-8 md:p-12 rounded-lg shadow-lg max-w-2xl w-full border border-gray-300 relative">
+        <!-- Cancel Icon -->
+        <a href="/" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 transition-colors duration-200" aria-label="Cancel and go back to main page">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </a>
+        <h2 class="text-3xl font-semibold text-center mb-8 text-gray-800">Post a Job</h2>
+        <form method="POST" class="space-y-6" action="/post_job" >
+            <!-- Job Post Name -->
+            <div>
+                <label for="post-name" class="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
+                <input type="text" id="post-name" name="post_name" placeholder="e.g., Software Engineer"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                       aria-label="Enter the job title">
+            </div>
+
+            <!-- Salary -->
+            <div>
+                <label for="salary" class="block text-sm font-medium text-gray-700 mb-1">Salary (PKR)</label>
+                <input type="text" id="salary" name="salary" placeholder="e.g., 50,000 - 80,000"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                       aria-label="Enter the salary range in PKR">
+            </div>
+
+            <!-- Location -->
+            <div>
+                <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                <input type="text" id="location" name="location" placeholder="e.g., Lahore, Pakistan"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                       aria-label="Enter the job location">
+            </div>
+
+            <!-- Education -->
+            <div>
+                <label for="education" class="block text-sm font-medium text-gray-700 mb-1">Education Required</label>
+                <input type="text" id="education" name="education" placeholder="e.g., Bachelor's in CS"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                       aria-label="Enter required education">
+            </div>
+
+            <!-- Responsibilities -->
+            <div>
+                <label for="responsibilities" class="block text-sm font-medium text-gray-700 mb-1">Responsibilities</label>
+                <textarea id="responsibilities" name="responsibilities" rows="6" placeholder="List key responsibilities..."
+                          class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm resize-y transition-colors duration-200"
+                          aria-label="Enter job responsibilities"></textarea>
+            </div>
+
+            <!-- Company Name -->
+            <div>
+                <label for="company-name" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                <input type="text" id="company-name" name="company_name" placeholder="e.g., Tech Solutions Inc."
+                       class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                       aria-label="Enter the company name">
+            </div>
+
+        <!-- Company type -->
+            <div>
+                <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Compnay Type</label>
+                <select id="gender" name="company_type"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                        aria-label="Select gender preference">
+                    <option value="">Any</option>
+                    <option value="Government">Government</option>
+                    <option value="Private">Private</option>
+                    <option value="Out of pakistan">Out of Pakistan</option>
+                </select>
+            </div>
+            <!-- Experience -->
+            <div>
+                <label for="experience" class="block text-sm font-medium text-gray-700 mb-1">Experience (Years)</label>
+                <input type="text" id="experience" name="experience" placeholder="e.g., 2-5 years"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                       aria-label="Enter required experience">
+            </div>
+
+            <!-- Expiry Date -->
+            <div>
+                <label for="expiry-date" class="block text-sm font-medium text-gray-700 mb-1">Application Expiry Date</label>
+                <input type="date" id="expiry-date" name="expiry_date"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                       aria-label="Select application expiry date">
+            </div>
+
+            <!-- Gender -->
+            <div>
+                <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Gender Preference</label>
+                <select id="gender" name="gender"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                        aria-label="Select gender preference">
+                    <option value="">Any</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Job Type -->
+            <div>
+                <label for="job-type" class="block text-sm font-medium text-gray-700 mb-1">Job Type</label>
+                <select id="job-type" name="job_type"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                        aria-label="Select job type">
+                    <option value="full-time">Full-time</option>
+                    <option value="part-time">Part-time</option>
+                    <option value="contract">Contract</option>
+                    <option value="temporary">Temporary</option>
+                    <option value="remote">Remote</option>
+                </select>
+            </div>
+
+            <!-- Job Shift -->
+            <div>
+                <label for="job-shift" class="block text-sm font-medium text-gray-700 mb-1">Job Shift</label>
+                <select id="job-shift" name="job_shift"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-400 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm transition-colors duration-200"
+                        aria-label="Select job shift">
+                    <option value="day">Day Shift</option>
+                    <option value="night">Night Shift</option>
+                    <option value="flexible">Flexible</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+                <button type="submit"
+                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gray-900 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300 ease-in-out"
+                        aria-label="Submit the job posting">
+                    Post Job
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

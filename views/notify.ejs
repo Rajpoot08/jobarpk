@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Notification Preferences</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for Job Notification Page */
+
+:root {
+    /* Existing color variables from previous sections */
+    /* Add any new color variables here if you need them */
+    --notify-page-bg: #f0f2f5; /* A light, clean background */
+    --notify-form-card-bg: #ffffff;
+    --notify-headline-color: #343a40; /* Dark grey for headline */
+
+    /* UPDATED: Notify Submit Button Colors */
+    --notify-submit-btn-bg: #000000; /* Black background */
+    --notify-submit-btn-border: #000000;
+    --notify-submit-btn-text: #ffffff; /* White text */
+    --notify-submit-btn-hover-bg: #333333; /* Darker grey on hover */
+    --notify-submit-btn-hover-border: #333333;
+}
+
+/* Base body style (should already be there from index.html) */
+body {
+    font-family: 'Roboto', sans-serif;
+    /* Other body styles */
+}
+
+/* Style for the notify.html body */
+.notify-page-body {
+    background-color: var(--notify-page-bg);
+    display: flex;
+    flex-direction: column; /* Allows main content to be vertically centered */
+    min-height: 100vh;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    padding: 1rem; /* Add some padding to prevent content touching edges on very small screens */
+}
+
+/* Close Button on the Right Side */
+/* REMOVED: position: absolute; top: 20px; left: 20px; z-index: 1050;
+.close-button-container {
+    /* This class is now primarily for semantical grouping in HTML,
+       its positioning is handled by its parent .d-flex. */
+
+
+.btn-close-custom {
+    color: #6c757d; /* Darker grey for this page's close button */
+    font-size: 2rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    /* Ensure no margin/padding is inherited that would break alignment */
+    padding: 0;
+    line-height: 1; /* Keep icon vertically centered */
+}
+.btn-close-custom:hover {
+    color: #343a40; /* Darker on hover */
+    opacity: 1;
+}
+
+
+.notify-form-card {
+    background-color: var(--notify-form-card-bg);
+    max-width: 800px; /* Max width for the form card */
+    width: 100%;
+    /* Ensure it takes up sufficient width within the centered body */
+}
+
+.notify-headline {
+    color: var(--notify-headline-color);
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+/* Custom styling for Bootstrap form controls to slightly enhance */
+.form-control,
+.input-group-text {
+    border-color: #ced4da; /* Default Bootstrap border color */
+    border-radius: 0.375rem; /* Bootstrap default radius */
+}
+
+.form-control:focus {
+    border-color: var(--indeed-blue); /* Use your primary blue for focus */
+    box-shadow: 0 0 0 0.25rem rgba(37, 87, 167, 0.25); /* Bootstrap-like focus glow */
+}
+
+.notify-submit-btn {
+    background-color: var(--notify-submit-btn-bg) !important;
+    border-color: var(--notify-submit-btn-border) !important;
+    color: var(--notify-submit-btn-text) !important; /* White text */
+    font-weight: 600;
+    padding: 0.8rem 2.5rem;
+    border-radius: 0.5rem;
+}
+.notify-submit-btn:hover {
+    background-color: var(--notify-submit-btn-hover-bg) !important;
+    border-color: var(--notify-submit-btn-hover-border) !important;
+}
+
+/* Responsive adjustments for the notify page */
+@media (max-width: 767.98px) {
+    .notify-form-card {
+        padding: 1.5rem !important; /* Smaller padding on mobile */
+    }
+    .notify-headline {
+        font-size: 1.8rem;
+    }
+    /* No need to reposition close button in media query, flex handles it */
+}
+
+@media (max-width: 575.98px) { /* Even smaller phones */
+    .notify-headline {
+        font-size: 1.5rem;
+    }
+    .form-label, .form-check-label, .form-text {
+        font-size: 0.9rem;
+    }
+    .btn.notify-submit-btn {
+        width: 100%; /* Full width button on small phones */
+        padding: 0.7rem 1.5rem;
+    }
+}
+    </style>
+</head>
+<body class="notify-page-body">
+
+    <div class="container py-4"> <div class="d-flex justify-content-end mb-3"> <a href="/" class="btn btn-close-custom ms-auto" aria-label="Close">
+                <i class="bi bi-x-lg"></i>
+            </a>
+        </div>
+
+        <div class="notify-form-card shadow-lg rounded-4 p-4 p-md-5">
+            <h1 class="text-center mb-4 notify-headline">Set Up Job Alerts</h1>
+            <p class="text-center mb-5 text-muted">Tell us what you're looking for, and we'll notify you of new opportunities.</p>
+
+            <form id="notificationForm" class="row g-3" method="post" action="/notify">
+                <div class="col-md-6">
+                    <label for="jobKeywords" class="form-label">Job Title or Keywords</label>
+                    <input type="text" class="form-control" id="jobKeywords" placeholder="e.g., Software Engineer, Marketing Manager" required name="job_post">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="jobLocation" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="jobLocation" placeholder="e.g., New York, Remote, Pakistan" required name="location">
+                </div>
+
+                <div class="col-12 mt-4">
+                    <label class="form-label mb-2">Job Type</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="fullTime" value="Full-time" name="job_type">
+                        <label class="form-check-label" for="fullTime">Full-time</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="partTime" value="Part-time" name="job_type">
+                        <label class="form-check-label" for="partTime">Part-time</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="contract" value="Contract" name="job_type">
+                        <label class="form-check-label" for="contract">Contract</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="remote" value="Remote" name="job_type">
+                        <label class="form-check-label" for="remote">Remote</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-4">
+                    <label for="minSalary" class="form-label">Minimum Salary (Annual)</label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" id="minSalary" placeholder="e.g., 50000"name="min_salary">
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <label for="maxSalary" class="form-label">Maximum Salary (Annual)</label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" id="maxSalary" placeholder="e.g., 100000" name="max_salary">
+                    </div>
+                </div>
+
+                <div class="col-12 mt-4">
+                    <label for="emailInput" class="form-label">Email Address for Alerts</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="your.email@example.com" required name="email">
+                    <div class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="col-12 mt-4">
+                    <label class="form-label mb-2">Notification Frequency</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="frequency" id="daily" value="daily" checked>
+                        <label class="form-check-label" for="daily">Daily</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="frequency" id="weekly" value="weekly">
+                        <label class="form-check-label" for="weekly">Weekly</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="frequency" id="monthly" value="monthly">
+                        <label class="form-check-label" for="monthly">Monthly</label>
+                    </div>
+                </div>
+
+                <div class="col-12 text-center mt-5">
+                    <button type="submit" class="btn btn-primary btn-lg notify-submit-btn">Create Job Alert</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+</body>
+</html>

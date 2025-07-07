@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Variables for a refined Black & White Theme */
+        :root {
+            --primary-text-color: #1a1a1a; /* Very dark grey for main text */
+            --secondary-text-color: #555555; /* Medium grey for secondary text/labels */
+            --background-color: #f5f5f5; /* Off-white background */
+            --card-background: #ffffff; /* Pure white for the login card */
+            --border-color: #e0e0e0; /* Light grey border for subtle definition */
+            --button-background: #000000; /* Solid black for primary button */
+            --button-text-color: #ffffff; /* White text for buttons */
+            --link-color: #000000; /* Black for links */
+            --input-border-focus: #000000; /* Black for input focus */
+            --border-radius-sm: 6px;
+            --border-radius-md: 10px;
+            --spacing-xs: 0.5rem;   /* 8px */
+            --spacing-sm: 1rem;     /* 16px */
+            --spacing-md: 1.5rem;   /* 24px */
+            --spacing-lg: 2rem;     /* 32px */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Ensure Inter font is loaded and used */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--primary-text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            box-sizing: border-box;
+            padding: var(--spacing-sm); /* Add some padding for very small screens */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 420px; /* Slightly wider for better proportions */
+            padding: var(--spacing-sm);
+        }
+
+        .login-card {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md); /* More rounded corners */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+            padding: var(--spacing-lg); /* Increased padding inside card */
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md); /* Increased gap between elements */
+            animation: fadeInScale 0.6s ease-out forwards; /* Subtle animation */
+            opacity: 0; /* Start invisible for animation */
+            transform: scale(0.98) translateY(10px); /* Start slightly smaller and lower */
+        }
+
+        .login-card h2 {
+            text-align: center;
+            color: var(--primary-text-color);
+            margin-bottom: var(--spacing-sm); /* Adjusted margin */
+            font-size: 2rem; /* Slightly larger heading */
+            font-weight: 600; /* Semi-bold */
+        }
+
+        .input-group {
+            margin-bottom: var(--spacing-xs); /* Reduced margin between input groups */
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: var(--spacing-sm); /* Consistent padding */
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm); /* Slightly rounded input fields */
+            font-size: 1rem;
+            box-sizing: border-box;
+            color: var(--primary-text-color);
+            background-color: var(--card-background);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--input-border-focus);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); /* More visible focus shadow */
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: var(--spacing-sm); /* Consistent padding */
+            background-color: var(--button-background);
+            color: var(--button-text-color);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-size: 1.1rem;
+            font-weight: 600; /* Semi-bold */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for button */
+        }
+
+        .btn-login:hover {
+            background-color: #333333; /* Darker black on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+        }
+
+        .btn-login:active {
+            transform: translateY(0); /* Press effect */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .forgot-password, .create-account {
+            text-align: center;
+            margin-top: var(--spacing-xs); /* Adjusted margin */
+        }
+
+        .forgot-password a, .create-account a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 0.95rem; /* Slightly larger link text */
+            transition: text-decoration 0.3s ease, color 0.3s ease;
+            font-weight: 500; /* Medium weight */
+        }
+
+        .forgot-password a:hover, .create-account a:hover {
+            text-decoration: underline;
+            color: #333333; /* Slightly darker on hover */
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: var(--spacing-sm) 0; /* Adjusted margin */
+            color: var(--secondary-text-color);
+            font-size: 0.9rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .divider:not(:empty)::before {
+            margin-right: var(--spacing-xs);
+        }
+
+        .divider:not(:empty)::after {
+            margin-left: var(--spacing-xs);
+        }
+
+        .btn-create-new-account {
+            width: auto;
+            padding: var(--spacing-xs) var(--spacing-md); /* Adjusted padding */
+            background-color: var(--button-background); /* Black button */
+            color: var(--button-text-color);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-size: 1rem;
+            font-weight: 600; /* Semi-bold */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+        }
+
+        .btn-create-new-account:hover {
+            background-color: #333333; /* Darker black on hover */
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn-create-new-account:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: var(--spacing-md); /* Slightly less padding on very small screens */
+                border-radius: var(--border-radius-md); /* Maintain rounded corners */
+            }
+
+            .login-card h2 {
+                font-size: 1.7rem;
+            }
+
+            .input-group input, .btn-login, .btn-create-new-account {
+                font-size: 0.9rem;
+                padding: var(--spacing-xs) * 1.5; /* Adjusted input/button padding */
+            }
+
+            .forgot-password a, .create-account a {
+                font-size: 0.85rem;
+            }
+
+            .divider {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Keyframe for subtle animation */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.98) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h2>Admin Log In</h2>
+            <form action="/admin_login" method="POST">
+                <div class="input-group">
+                    <input type="text" placeholder="Email address or phone number" name="email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Password" name="password" required>
+                </div>
+                <button type="submit" class="btn-login">Log In</button>
+            </form>
+           <% if (error) { %>
+               <!-- Button trigger modal -->
+                <div id="errorMessage" class="alert alert-danger rounded-pill text-center" role="alert">
+                    <%= error %>
+                </div>
+
+           <% } %>
+           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>
