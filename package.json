@@ -6,7 +6,7 @@
   "scripts": {
     "type": "module",
     "test": "dev",
-    "dev": "nodemon server.js"
+    "dev": "node server.js"
   },
   "author": "Haseeb bhatti",
   "license": "ISC",
@@ -16,6 +16,5 @@
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mongoose": "^8.16.0",
-    "nodemon": "^3.1.10"
   }
 }
